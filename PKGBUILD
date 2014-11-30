@@ -7,26 +7,19 @@ arch=('x86_64')
 url='https://plex.tv/'
 license=('custom')
 depends=('systemd')
-replaces=('plexmediaserver')
-conflicts=('plexmediaserver-plexpass')
 backup=('etc/conf.d/plexmediaserver')
 install='plex-media-server.install'
-source=('plexmediaserver.conf.d'
+source=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm"
+        'plexmediaserver.conf.d'
         'plexmediaserver.service'
         'plexmediaserver.sh'
         'terms.txt')
+        
 sha256sums=('a82829854ab8e780f7686a9e65d36c8cf6900d6c3471176e0f2aae8f5a024a19'
             'ea50f866c7aa6b0a9e71d830887fb081b70f34f0b4b36f7cd7a69ab48b81d371'
             'b55368f164da76696215153a7a2d880097f1e3ccdba9faf5a3690706407eb7bb'
-            '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
-
-if [[ $CARCH == x86_64 ]]; then
-  source+=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm")
-  sha256sums+=('6466e67868a7e0422143811937cbf2abb96fa2698b1d73ace58b519cc78d8288')
-else
-  source+=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.i386.rpm")
-  sha256sums+=('4af7d2faed8b7ebd6786b01f409cf0089aeec3b95cb3db3d3acc5fd10b940384')
-fi
+            '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a'
+            '6466e67868a7e0422143811937cbf2abb96fa2698b1d73ace58b519cc78d8288')
 
 package() {
   install -dm 755 "${pkgdir}"/{opt,etc/conf.d,usr/{bin,lib/systemd/system}}
