@@ -1,7 +1,7 @@
 pkgname=plex-media-server
 pkgver=0.9.11.4.739
 _pkgsum=a4e710f
-pkgrel=1
+pkgrel=2
 pkgdesc='Plex Media Server'
 arch=('x86_64')
 url='https://plex.tv/'
@@ -15,11 +15,11 @@ source=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexme
         'plexmediaserver.sh'
         'terms.txt')
         
-sha256sums=('a82829854ab8e780f7686a9e65d36c8cf6900d6c3471176e0f2aae8f5a024a19'
-            'ea50f866c7aa6b0a9e71d830887fb081b70f34f0b4b36f7cd7a69ab48b81d371'
-            'b55368f164da76696215153a7a2d880097f1e3ccdba9faf5a3690706407eb7bb'
-            '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a'
-            '6466e67868a7e0422143811937cbf2abb96fa2698b1d73ace58b519cc78d8288')
+md5sums=('c5876e81200bd0b70ae74beee8b2a141'
+         'acf8e4ede01b20819eb1a529a64e923a'
+         'c8e233369a15b6452599fee529a33c44'
+         '21ba695c7568e117850f9dd63d14b418'
+         'bd703bc750b989a27edd590eb8c8e9d7')
 
 package() {
   install -dm 755 "${pkgdir}"/{opt,etc/conf.d,usr/{bin,lib/systemd/system}}
@@ -35,4 +35,3 @@ package() {
   install -m 644 terms.txt "${pkgdir}"/usr/share/licenses/plex-media-server/
 }
 
-# vim: ts=2 sw=2 et:
