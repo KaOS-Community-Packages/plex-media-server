@@ -1,7 +1,7 @@
 pkgname=plex-media-server
-pkgver=0.9.11.4.739
-_pkgsum=a4e710f
-pkgrel=2
+pkgver=0.9.11.7.803
+_pkgsum=87d0708
+pkgrel=1
 pkgdesc='Plex Media Server'
 arch=('x86_64')
 url='https://plex.tv/'
@@ -15,7 +15,7 @@ source=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexme
         'plexmediaserver.sh'
         'terms.txt')
         
-md5sums=('c5876e81200bd0b70ae74beee8b2a141'
+md5sums=('585e37e7bc0988352723c1b95a59c519'
          'acf8e4ede01b20819eb1a529a64e923a'
          'c8e233369a15b6452599fee529a33c44'
          '21ba695c7568e117850f9dd63d14b418'
