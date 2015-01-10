@@ -10,16 +10,15 @@ depends=('systemd')
 backup=('etc/conf.d/plexmediaserver')
 install='plex-media-server.install'
 source=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm"
-        'plexmediaserver.conf.d'
+	'plexmediaserver.conf.d'
         'plexmediaserver.service'
         'plexmediaserver.sh'
         'terms.txt')
-        
-md5sums=('585e37e7bc0988352723c1b95a59c519'
-         'acf8e4ede01b20819eb1a529a64e923a'
-         'c8e233369a15b6452599fee529a33c44'
-         '21ba695c7568e117850f9dd63d14b418'
-         'bd703bc750b989a27edd590eb8c8e9d7')
+sha256sums=('2586252f05df035a06f65b71ab1a01ced6fdc5c75b7d8d51ff8aafb795f04e46'
+	    'a82829854ab8e780f7686a9e65d36c8cf6900d6c3471176e0f2aae8f5a024a19'
+            'ea50f866c7aa6b0a9e71d830887fb081b70f34f0b4b36f7cd7a69ab48b81d371'
+            '7e5e5e667739bd35f16b7de5edd5846b0ed555a0f61a17aa65e5d623e878f25d'
+            '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
 
 package() {
   install -dm 755 "${pkgdir}"/{opt,etc/conf.d,usr/{bin,lib/systemd/system}}
@@ -35,3 +34,4 @@ package() {
   install -m 644 terms.txt "${pkgdir}"/usr/share/licenses/plex-media-server/
 }
 
+# vim: ts=2 sw=2 et:
