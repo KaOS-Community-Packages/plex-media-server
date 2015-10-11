@@ -1,6 +1,6 @@
 pkgname=plex-media-server
-pkgver=0.9.12.11.1406
-_pkgsum=8403350
+pkgver=0.9.12.13.1464
+_pkgsum=4ccd2ca
 pkgrel=1
 pkgdesc='Plex Media Server'
 arch=('x86_64')
@@ -14,12 +14,11 @@ source=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexme
         'plexmediaserver.service'
         'plexmediaserver.sh'
         'terms.txt')
-sha256sums=('295174b3617d699f11ecc22bc603a579e2291fe6ba55a536711acafd64455390'
+sha256sums=('46dcb6a1bf1945d54f951515d1cb07e160ac065c8ab482a2a1778835661cf8bf'
             'a82829854ab8e780f7686a9e65d36c8cf6900d6c3471176e0f2aae8f5a024a19'
             'ea50f866c7aa6b0a9e71d830887fb081b70f34f0b4b36f7cd7a69ab48b81d371'
             '7e5e5e667739bd35f16b7de5edd5846b0ed555a0f61a17aa65e5d623e878f25d'
             '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
-
 package() {
   install -dm 755 "${pkgdir}"/{opt,etc/conf.d,usr/{bin,lib/systemd/system}}
   cp -dr --no-preserve='ownership' usr/lib/plexmediaserver "${pkgdir}"/opt/
