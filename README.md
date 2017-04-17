@@ -3,12 +3,17 @@ plex-media-server
 
 Plex Media Server
 
-URL = https://plex.tv/
+[HOMEPAGE](https://plex.tv/)
 
 
-Install with kcp in a terminal:
+### Install:
 
 ```
-$ kcp -i plex-media-server
+kcp -i plex-media-server
 ```
 
+### Enable and start the service:
+```
+sudo systemctl enable plexmediaserver.service
+sudo systemctl start plexmediaserver.service
+```

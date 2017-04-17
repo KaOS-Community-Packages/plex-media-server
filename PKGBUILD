@@ -1,36 +1,34 @@
 pkgname=plex-media-server
-pkgver=0.9.14.6.1620
-_pkgsum=e0b7243
+pkgver=1.5.5.3634
+_pkgsum=995f1dead
 pkgrel=1
 pkgdesc='Plex Media Server'
 arch=('x86_64')
 url='https://plex.tv/'
-license=('custom')
-depends=('systemd')
+license=('custom: https://www.plex.tv/about/privacy-legal/plex-terms-of-service/')
 backup=('etc/conf.d/plexmediaserver')
 install='plex-media-server.install'
 source=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm"
-	'plexmediaserver.conf.d'
+        'plexmediaserver.conf.d'
         'plexmediaserver.service'
-        'plexmediaserver.sh'
+        'plex.conf'
         'terms.txt')
-sha256sums=('21ced1dcea4f4ca977b47208037f8a189f5e45686e55b0b2de57c96dbb17282f'
-            'a82829854ab8e780f7686a9e65d36c8cf6900d6c3471176e0f2aae8f5a024a19'
-            'ea50f866c7aa6b0a9e71d830887fb081b70f34f0b4b36f7cd7a69ab48b81d371'
-            '7e5e5e667739bd35f16b7de5edd5846b0ed555a0f61a17aa65e5d623e878f25d'
-            '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
+md5sums=('47d2026555372b7fa0508ce615e512a6'
+         'ce68337bf5cdfb8b2183cc1180382d11'
+         '4fa33957d99a87260dca9b309cd9e5d4'
+         '146e68120138449e9e9d1483fb0624c8'
+         'bd703bc750b989a27edd590eb8c8e9d7')
+         
 package() {
-  install -dm 755 "${pkgdir}"/{opt,etc/conf.d,usr/{bin,lib/systemd/system}}
-  cp -dr --no-preserve='ownership' usr/lib/plexmediaserver "${pkgdir}"/opt/
-  install -m 755 plexmediaserver.sh "${pkgdir}"/usr/bin/
-  install -m 644 plexmediaserver.service "${pkgdir}"/usr/lib/systemd/system/
-  install -m 644 plexmediaserver.conf.d "${pkgdir}"/etc/conf.d/plexmediaserver
+    install -dm 755 ${pkgdir}/{opt,etc/conf.d,usr/{bin,lib/systemd/system}}
+    cp -dr --no-preserve='ownership' usr/lib/plexmediaserver ${pkgdir}/opt/
+    install -m 644 plexmediaserver.service ${pkgdir}/usr/lib/systemd/system/
+    install -m 644 plexmediaserver.conf.d ${pkgdir}/etc/conf.d/plexmediaserver
 
-  install -dm 755 "${pkgdir}"/var/lib/plex
-  chown 421:421 -R "${pkgdir}"/var/lib/plex
+    install -Dm 644 ${srcdir}/plex.conf ${pkgdir}/usr/lib/sysusers.d/plex.conf
 
-  install -dm 755 "${pkgdir}"/usr/share/licenses/plex-media-server
-  install -m 644 terms.txt "${pkgdir}"/usr/share/licenses/plex-media-server/
+    install -dm 755 ${pkgdir}/usr/share/licenses/plex-media-server
+    install -m 644 terms.txt ${pkgdir}/usr/share/licenses/plex-media-server/
 }
 
 # vim: ts=2 sw=2 et:
