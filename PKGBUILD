@@ -15,7 +15,7 @@ source=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexme
         'terms.txt')
 md5sums=('47d2026555372b7fa0508ce615e512a6'
          'ce68337bf5cdfb8b2183cc1180382d11'
-         '4fa33957d99a87260dca9b309cd9e5d4'
+         '34268b981e3b8c833a0e2270429232a6'
          '146e68120138449e9e9d1483fb0624c8'
          '6c43875003b842ff4cd5b7e9886fed78')
          
