@@ -1,10 +1,7 @@
 post_install() {
   systemd-sysusers plex.conf
   [[ -d /var/lib/plex ]] || install -dm 750 -o plex -g plex /var/lib/plex
-}
-
-post_install() {
-echo -e "Enable and start the service. :\n-----------------------------------------\nsudo systemctl enable plexmediaserver.servicee\nsystemctl start plexmediaserver.service\n-----------------------------------------\nThe admin GUI starts automatically and remains available on http://127.0.0.1:32400/web"
+  echo -e "Enable and start the service. :\n-----------------------------------------\nsudo systemctl enable plexmediaserver.service\nsystemctl start plexmediaserver.service\n-----------------------------------------\nThe admin GUI starts automatically and remains available on http://127.0.0.1:32400/web"
 }
 
 # vim: ts=2 sw=2 et:
