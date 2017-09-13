@@ -11,9 +11,3 @@ Plex Media Server
 ```
 kcp -i plex-media-server
 ```
-
-### Enable and start the service:
-```
-sudo systemctl enable plexmediaserver.service
-sudo systemctl start plexmediaserver.service
-```

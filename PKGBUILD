@@ -1,34 +1,35 @@
 pkgname=plex-media-server
-pkgver=1.5.5.3634
-_pkgsum=995f1dead
-pkgrel=2
+pkgver=1.8.4.4249
+_pkgsum=3497d6779
+pkgrel=1
 pkgdesc='Plex Media Server'
 arch=('x86_64')
 url='https://plex.tv/'
-license=('custom: https://www.plex.tv/about/privacy-legal/plex-terms-of-service/')
+license=('custom')
+depends=('systemd')
 backup=('etc/conf.d/plexmediaserver')
 install='plex-media-server.install'
-source=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm"
+source=("https://downloads.plex.tv/${pkgname}/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm"
         'plexmediaserver.conf.d'
         'plexmediaserver.service'
-        'plex.conf'
+        'plexmediaserver.sh'
         'terms.txt')
-md5sums=('47d2026555372b7fa0508ce615e512a6'
-         'ce68337bf5cdfb8b2183cc1180382d11'
-         '34268b981e3b8c833a0e2270429232a6'
-         '146e68120138449e9e9d1483fb0624c8'
+md5sums=('24addce6c73473fc8683416ad97761e9'
+         'acf8e4ede01b20819eb1a529a64e923a'
+         'c8e233369a15b6452599fee529a33c44'
+         '6d328756dc99c3efc266cd59d2641979'
          '6c43875003b842ff4cd5b7e9886fed78')
-         
+
 package() {
     install -dm 755 ${pkgdir}/{opt,etc/conf.d,usr/{bin,lib/systemd/system}}
     cp -dr --no-preserve='ownership' usr/lib/plexmediaserver ${pkgdir}/opt/
+    install -m 755 plexmediaserver.sh ${pkgdir}/usr/bin/
     install -m 644 plexmediaserver.service ${pkgdir}/usr/lib/systemd/system/
     install -m 644 plexmediaserver.conf.d ${pkgdir}/etc/conf.d/plexmediaserver
 
-    install -Dm 644 ${srcdir}/plex.conf ${pkgdir}/usr/lib/sysusers.d/plex.conf
+    install -dm 755 ${pkgdir}/var/lib/plex
+    chown 421:421 -R ${pkgdir}/var/lib/plex
 
-    install -dm 755 ${pkgdir}/usr/share/licenses/plex-media-server
-    install -m 644 terms.txt ${pkgdir}/usr/share/licenses/plex-media-server/
+    install -dm 755 ${pkgdir}/usr/share/licenses/${pkgname}
+    install -m 644 terms.txt ${pkgdir}/usr/share/licenses/${pkgname}/
 }
-
-# vim: ts=2 sw=2 et:
