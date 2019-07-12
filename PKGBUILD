@@ -1,6 +1,6 @@
-pkgname=plex-media-server
-pkgver=1.14.1.5488
-_pkgsum=cc260c476
+pkgname=plex-media-server-new
+pkgver=1.16.1.1291
+_pkgsum=158e5b199
 pkgrel=1
 pkgdesc='Plex Media Server'
 arch=('x86_64')
@@ -9,12 +9,12 @@ license=('custom')
 depends=('systemd')
 backup=('etc/conf.d/plexmediaserver')
 install='plex-media-server.install'
-source=("https://downloads.plex.tv/${pkgname}/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm"
+source=("https://downloads.plex.tv/${pkgname}/${pkgver}-${_pkgsum}/redhat/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm"
         'plexmediaserver.conf.d'
         'plexmediaserver.service'
         'plexmediaserver.sh'
         'terms.txt')
-md5sums=('fafb64a6cc876478964e563af35ea1bd'
+md5sums=('d17825145066061d19059097d969d235'
          'acf8e4ede01b20819eb1a529a64e923a'
          'c8e233369a15b6452599fee529a33c44'
          '6d328756dc99c3efc266cd59d2641979'
